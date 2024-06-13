@@ -11,6 +11,7 @@ export const Appointment = ({ customer }) => (
 
 export const AppointmentsDayView = ({ appointments }) => (
     <div id="appointmentsDayView">
+        <p>There are no appointments scheduled for today.</p>
         <ol>
             {appointments.map(appointment => (
                 <li key={appointment.startsAt}>

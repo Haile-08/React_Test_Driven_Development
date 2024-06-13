@@ -33,6 +33,17 @@ describe("Appointment",()=>{
 });
 
 describe("AppointmentsDayView", () => {
+    const today = new Date();
+    const twoAppointments = [
+        {
+          startsAt: today.setHours(12, 0),
+          customer: { firstName: "Ashley" },
+        },
+        {
+          startsAt: today.setHours(13, 0),
+          customer: { firstName: "Jordan" },
+        },
+    ];
     let container;
 
     beforeEach(()=>{
@@ -60,24 +71,12 @@ describe("AppointmentsDayView", () => {
     });
 
     it("renders an li for each appointment", () => {
-        const today = new Date();
-        const twoAppointments = [
-            { startsAt: today.setHours(12, 0)},
-            { startsAt: today.setHours(13, 0)},
-        ];
-
         render(<AppointmentsDayView appointments={twoAppointments}/>);
         const listChildren = document.querySelectorAll("ol > li");
         expect(listChildren).toHaveLength(2);
     });
 
     it("renders the time of each appointment", () => {
-        const today = new Date();
-        const twoAppointments = [
-            { startsAt: today.setHours(12, 0)},
-            { startsAt: today.setHours(13, 0)},
-        ];
-
         render(<AppointmentsDayView appointments={twoAppointments}/>);
         const listChildren = document.querySelectorAll("li");
         expect(listChildren[0].textContent).toEqual(
@@ -92,6 +91,17 @@ describe("AppointmentsDayView", () => {
         render(<AppointmentsDayView appointments={[]} />);
         expect(document.body.textContent).toContain(
             "There are no appointments scheduled for today."
+        );
+    });
+
+    it("selects the first appointment by default", () => {
+        render(
+            <AppointmentsDayView
+                appointments={twoAppointments}
+            />
+        );
+        expect(document.body.textContent).toContain(
+            "Ashley"
         );
     });
 });
