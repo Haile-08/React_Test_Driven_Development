@@ -1,3 +1,2 @@
-export const Appointment = () => {
-    
-};
+
+export const Appointment = () => "Ashley";
