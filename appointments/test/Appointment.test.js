@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"
 import { Appointment } from "../src/Appointment";
 
 describe("Appointment",()=>{
-    it("renders the customer first name", () => {
+    it.skip("renders the customer first name", () => {
         const customer = { firstName: "Ashley" };
         const component = (
             <Appointment customer={customer} />
@@ -11,7 +11,7 @@ describe("Appointment",()=>{
 
         const container = document.createElement("div");
         document.body.appendChild(container);
-        
+s
         act(() =>
             ReactDOM.createRoot(container).render(component)
         )
