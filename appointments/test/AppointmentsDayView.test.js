@@ -3,7 +3,7 @@ import {
   Appointment,
   AppointmentsDayView,
 } from "../src/AppointmentsDayView";
-import { initializeReactContainer, container, render } from "./reactTestExtensions";
+import { initializeReactContainer, container, render, click } from "./reactTestExtensions";
 
 describe("Appointment", () => {
   const blankCustomer = {
@@ -269,7 +269,7 @@ describe("AppointmentsDayView", () => {
     );
     const button =
       document.querySelectorAll("button")[1];
-    act(() => button.click());
+    click(button);
     expect(document.body.textContent).toContain(
       "Jordan"
     );
@@ -283,7 +283,7 @@ describe("AppointmentsDayView", () => {
     );
     const button =
       document.querySelectorAll("button")[1];
-    act(() => button.click());
+    click(button);
     expect(button.className).toContain("toggled");
   });
 
