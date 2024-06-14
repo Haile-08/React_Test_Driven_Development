@@ -6,7 +6,9 @@ const appointmentTimeOfDay = (startsAt) => {
 };
 
 export const Appointment = ({ customer }) => (
-    <div id="appointmentsView">{customer.firstName}</div>
+    <div id="appointmentsView">
+        {customer.firstName}
+    </div>
 );
 
 export const AppointmentsDayView = ({ appointments }) => {
