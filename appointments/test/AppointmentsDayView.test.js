@@ -313,4 +313,17 @@ describe("toContainText matcher", ()=>{
 
     expect(result.pass).toBe(true);
   })
+
+  it("return pass is false when the text is not found in the given DOM element", () => {
+    const domElement = {
+      textContent: ""
+    };
+
+    const result = toContainText(
+      domElement,
+      "text to find"
+    );
+
+    expect(result.pass).toBe(false);
+  })
 });
