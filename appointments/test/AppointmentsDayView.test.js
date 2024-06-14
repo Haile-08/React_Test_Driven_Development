@@ -1,10 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { act } from "react-dom/test-utils";
+import React, { act } from "react";
 import {
   Appointment,
   AppointmentsDayView,
 } from "../src/AppointmentsDayView";
+import { initializeReactContainer, container, render } from "./reactTestExtensions";
 
 describe("Appointment", () => {
   const blankCustomer = {
@@ -13,17 +12,9 @@ describe("Appointment", () => {
     phoneNumber: "",
   };
 
-  let container;
-
   beforeEach(() => {
-    container = document.createElement("div");
-    document.body.replaceChildren(container);
+    initializeReactContainer();
   });
-
-  const render = (component) =>
-    act(() =>
-      ReactDOM.createRoot(container).render(component)
-    );
 
   const appointmentTable = () =>
     document.querySelector(
@@ -190,17 +181,9 @@ describe("AppointmentsDayView", () => {
     },
   ];
 
-  let container;
-
   beforeEach(() => {
-    container = document.createElement("div");
-    document.body.replaceChildren(container);
+    initializeReactContainer();
   });
-
-  const render = (component) =>
-    act(() =>
-      ReactDOM.createRoot(container).render(component)
-    );
 
   it("renders a div with the right id", () => {
     render(<AppointmentsDayView appointments={[]} />);

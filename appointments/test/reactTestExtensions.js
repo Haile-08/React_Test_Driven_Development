@@ -1,3 +1,6 @@
+import { act } from "react";
+import ReactDOM from "react-dom/client";
+
 export let container;
 
 export const initializeReactContainer = () => {
@@ -5,3 +8,6 @@ export const initializeReactContainer = () => {
     document.body.replaceChildren(container);
 }
 
+export const render = (component) => act(()=> 
+    ReactDOM.createRoot(container).render(component) 
+);
