@@ -6,7 +6,7 @@ const appointmentTimeOfDay = (startsAt) => {
 };
 
 export const Appointment = ({ customer }) => (
-    <div>{customer.firstName}</div>
+    <div id="appointmentsView">{customer.firstName}</div>
 );
 
 export const AppointmentsDayView = ({ appointments }) => {
@@ -14,11 +14,6 @@ export const AppointmentsDayView = ({ appointments }) => {
 
    return ( 
     <div id="appointmentsDayView">
-        {appointments.length === 0 ? (
-            <p>There are no appointments scheduled for today.</p>
-        ): (
-            <Appointment {...appointments[selectedAppointment]} />
-        )}
         <ol>
             {appointments.map((appointment, i) => (
                 <li key={appointment.startsAt}>
@@ -31,5 +26,10 @@ export const AppointmentsDayView = ({ appointments }) => {
                 </li>
             ))}
         </ol>
+        {appointments.length === 0 ? (
+            <p>There are no appointments scheduled for today.</p>
+        ): (
+            <Appointment {...appointments[selectedAppointment]} />
+        )}
     </div>
 )};

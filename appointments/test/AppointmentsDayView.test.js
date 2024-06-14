@@ -16,6 +16,16 @@ describe("Appointment",()=>{
             ReactDOM.createRoot(container).render(component)
     );
 
+    it("renders div with the right id", () => {
+        const customer = { firstName: "Ashley" };
+        render(<Appointment customer={customer} />);
+        expect(
+            document.querySelector(
+                "div#appointmentsView"
+            )
+        ).not.toBeNull();
+    });
+
     it.skip("renders the customer first name", () => {
         const customer = { firstName: "Ashley" };
         render(<Appointment customer={customer} />);
