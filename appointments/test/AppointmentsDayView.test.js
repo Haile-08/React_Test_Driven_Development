@@ -326,4 +326,17 @@ describe("toContainText matcher", ()=>{
 
     expect(result.pass).toBe(false);
   })
+
+  it("returns a message that contains the source line if no match", () => {
+    const domElement = {
+      textContent: ""
+    };
+
+    const result = toContainText(
+      domElement,
+      "text to find"
+    );
+
+    expect(stripTerminalColor(result.message())).toContain(`expect(element).toContainText("text to find")`);
+  })
 });
